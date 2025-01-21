@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:14:29 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/13 18:16:11 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:19:04 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 # include <unistd.h>
 
-long				ft_atoi(const char *s);
+int					ft_atoi(const char *s);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nelem, size_t size);
 int					ft_isalnum(int c);
