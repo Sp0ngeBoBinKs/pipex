@@ -6,7 +6,7 @@
 #    By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/17 20:03:40 by igrousso          #+#    #+#              #
-#    Updated: 2025/01/21 19:18:01 by igrousso         ###   ########.fr        #
+#    Updated: 2025/01/22 19:29:10 by igrousso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ BONUS_NAME =
 
 # Source files
 
-SRCS = $(addprefix sources/, )
+SRCS = $(addprefix sources/, utils.c)
 MAIN = $(addprefix sources/, main.c)
 
 SRCS_B = $(addprefix sources/bonus/, )

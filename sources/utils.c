@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 20:06:19 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/22 19:52:56 by igrousso         ###   ########.fr       */
+/*   Created: 2025/01/22 17:56:56 by igrousso          #+#    #+#             */
+/*   Updated: 2025/01/22 20:07:26 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../pipex.h"
 
-# include "libft/libft.h"
-# include <errno.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/wait.h>
-# include <unistd.h>
+void	ft_free(char **tab)
+{
+	int	i;
 
-# define PIPE_ERROR 1
-# define FORK_ERROR 2
-# define EXECUTABLE_ERROR 3
-# define OPEN_ERROR 4
-# define DUP_ERROR 5
-# define SPLIT_ERROR 6
-
-# define STDIN 0
-# define STDOUT 1
-
-void	ft_free(char **tab);
-
-#endif
+	i = 0;
+	if (!tab)
+		return ;
+	else
+	{
+		while (tab[i])
+			free(tab[i++]);
+		free(tab);
+	}
+}
