@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:57:25 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/22 20:24:51 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/23 21:18:01 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	first_arg(char *str)
 
 int	command_arg(char *av)
 {
+	if (!av)
+	{
+		write(2, "Command not found\n", 18);
+		exit(EXIT_FAILURE);
+	}
 	if (access(av, X_OK) == 0)
 		return (1);
 	return (0);
@@ -53,6 +58,8 @@ char	**get_path_from_env(char **env)
 	char	*str;
 
 	str = find_path(env);
+	if (!str)
+		return (NULL);
 	tab = ft_split(str, ':');
 	return (tab);
 }
@@ -89,13 +96,15 @@ void	error(int event)
 	if (event == FORK_ERROR)
 		perror("Error during fork");
 	if (event == EXECUTABLE_ERROR)
-		perror("Error finding executable");
+		perror("Command not found");
 	if (event == OPEN_ERROR)
 		perror("Error opening file");
 	if (event == DUP_ERROR)
 		perror("Error duplicating the file descriptor");
 	if (event == SPLIT_ERROR)
 		perror("Error during split");
+	if (event == EXEC_ERROR)
+		perror("Error during execve");
 	exit(EXIT_FAILURE);
 }
 
@@ -147,12 +156,13 @@ void	process1(int *fd_p, char *file, char *command, char **env)
 		ft_close(fd, fd_p[1]);
 		error(DUP_ERROR);
 	}
-	if (execve(arg[0], arg, NULL) == -1)
+	close(fd);
+	close(fd_p[1]);
+	if (execve(arg[0], arg, env) == -1)
 	{
 		ft_free(arg);
-		close(fd);
+		error(EXEC_ERROR);
 	}
-	printf("test4\n");
 }
 
 void	process2(int *fd_p, char *command, char *file, char **env)
@@ -171,11 +181,12 @@ void	process2(int *fd_p, char *command, char *file, char **env)
 		ft_close(fd, fd_p[0]);
 		error(DUP_ERROR);
 	}
-	printf("test1\n");
-	if (execve(arg[0], arg, NULL) == -1)
+	close(fd);
+	close(fd_p[0]);
+	if (execve(arg[0], arg, env) == -1)
 	{
 		ft_free(arg);
-		close(fd);
+		error(EXEC_ERROR);
 	}
 }
 
@@ -184,8 +195,8 @@ void	pipex(char **av, char **env)
 	int	fd_p[2];
 	int	id1;
 	int	id2;
-	int	status;
-
+	// int	status1;
+	
 	if (pipe(fd_p) == -1)
 		error(PIPE_ERROR);
 	id1 = fork();
@@ -198,12 +209,10 @@ void	pipex(char **av, char **env)
 		error(FORK_ERROR);
 	if (id2 == 0)
 		process2(fd_p, av[3], av[4], env);
-	waitpid(id1, &status, 0);
-	waitpid(id2, &status, 0);
-	printf("test2\n");
 	close(fd_p[0]);
 	close(fd_p[1]);
-	printf("test3\n");
+	waitpid(id1, NULL, 0);
+	waitpid(id2, NULL, 0);
 }
 
 int	main(int ac, char **av, char **env)
@@ -213,10 +222,3 @@ int	main(int ac, char **av, char **env)
 	pipex(av, env);
 	return (0);
 }
-
-// int main(int ac, char **av, char **env)
-// {
-// 	(void)ac;
-// 	printf("%s\n", find_executable(env, av[1]));
-// 	return (0);
-// }

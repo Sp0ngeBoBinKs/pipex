@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:06:19 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/22 19:52:56 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/23 21:13:13 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@
 # define OPEN_ERROR 4
 # define DUP_ERROR 5
 # define SPLIT_ERROR 6
+# define EXEC_ERROR 7
 
 # define STDIN 0
 # define STDOUT 1
+
+void	error(int event);
 
 void	ft_free(char **tab);
 
