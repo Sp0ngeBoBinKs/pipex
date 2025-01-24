@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 00:40:32 by igrousso          #+#    #+#             */
-/*   Updated: 2024/11/18 19:06:54 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:12:07 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,8 @@ int	ft_printf(const char *s, ...)
 	return (c + i);
 }
 
-// #include <limits.h>
-
 // int	main(void)
 // {
-// 	char	*str;
-
-// 	str = NULL;
-// 	ft_printf("%d", ft_printf("%% %%"));
-// 	printf("\n");
-// 	ft_printf("%d", printf("%% %%"));
+// 	ft_printf("test\n");
 // 	return (0);
 // }
