@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:57:25 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/24 21:31:57 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/24 23:05:05 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,9 +266,7 @@ void	process2(int *fd_p, char *command, char *file, char **env)
 int ft_wait(int id1, int id2)
 {
 	int status2;
-	(void)id1;
 
-	// waitpid(0, NULL, 0);
 	waitpid(id1, NULL, 0);
 	waitpid(id2, &status2, 0);
 	if (WIFEXITED(status2))
@@ -295,8 +293,6 @@ int	pipex(char **av, char **env)
 	if (id2 == 0)
 		process2(fd_p, av[3], av[4], env);
 	ft_close(fd_p[0], fd_p[1]);
-	// waitpid(id1, &status, 0);
-	// waitpid(id2, &status, 0);
 	return (ft_wait(id1, id2));
 }
 
