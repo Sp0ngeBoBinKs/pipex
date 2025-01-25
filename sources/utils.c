@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:56:56 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/22 20:07:26 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:40:47 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,23 @@ void	ft_free(char **tab)
 			free(tab[i++]);
 		free(tab);
 	}
+}
+
+void	ft_close(int fd1, int fd2)
+{
+	if (fd1 != -1)
+		close(fd1);
+	if (fd2 != -1)
+		close(fd2);
+}
+
+int	ft_wait(int id1, int id2)
+{
+	int	status2;
+
+	waitpid(id1, NULL, 0);
+	waitpid(id2, &status2, 0);
+	if (WIFEXITED(status2))
+		return (WEXITSTATUS(status2));
+	return (0);
 }

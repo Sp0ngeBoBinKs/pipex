@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:06:19 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/24 19:27:54 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:26:21 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,25 @@
 # define STDIN 0
 # define STDOUT 1
 
+/* get command */
+
+char	**get_arg(char *command, char **env, int fd1, int fd2);
+int		command_arg(char **av, int fd1, int fd2);
+char	*find_executable(char **env, char *av);
+char	**get_path_from_env(char **env);
+char	*find_path(char **env);
+
+/* error */
+
 void	error(int event, char *str, int fd1, int fd2);
 void	write_error(char *str1, char *str2);
 void	errno_exit(void);
+void	error2(char **arg, char **env, int fd1, int fd2);
+
+/* utils */
+
 void	ft_free(char **tab);
 void	ft_close(int fd1, int fd2);
+int		ft_wait(int id1, int id2);
 
 #endif

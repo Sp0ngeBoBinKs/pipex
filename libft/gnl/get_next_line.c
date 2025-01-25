@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:08:39 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/24 18:57:44 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:32:57 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ char	*get_next_line(int fd)
 // 	(void)ac;
 // 	name = av[1];
 // 	fd = open(name, O_RDONLY);
-// 	i = 1;
+// 	i = 20;
 // 	while (--i >= 0)
 // 	{
 // 		line = get_next_line(fd);
