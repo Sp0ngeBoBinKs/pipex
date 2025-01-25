@@ -6,7 +6,7 @@
 #    By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/17 20:03:40 by igrousso          #+#    #+#              #
-#    Updated: 2025/01/25 15:25:37 by igrousso         ###   ########.fr        #
+#    Updated: 2025/01/25 16:07:16 by igrousso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(BONUS_NAME) : $(OBJ_B) $(OBJ) $(OBJ_MAIN_B) $(LIBFT)
 # Compile library
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_PATH)
+	@$(MAKE) -C $(LIBFT_PATH)
 
 # Generic rule for .c to .o
 
@@ -72,13 +72,13 @@ $(LIBFT):
 
 clean:
 	rm -rf $(ALL_OBJS)
-	$(MAKE) -C $(LIBFT_PATH) clean
+	@$(MAKE) -C $(LIBFT_PATH) clean
 
 # Full clean
 
 fclean: clean
-		rm -f $(NAME) $(BONUS_NAME)
-		$(MAKE) -C $(LIBFT_PATH) fclean
+	rm -f $(NAME) $(BONUS_NAME)
+	@$(MAKE) -C $(LIBFT_PATH) fclean
 
 # Rebuild everything
 
