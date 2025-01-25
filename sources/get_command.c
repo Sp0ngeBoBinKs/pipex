@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:19:32 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 15:41:00 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:51:32 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**get_path_from_env(char **env)
 	str = find_path(env);
 	if (!str)
 		return (NULL);
-	tab = ft_split(str, ':');
+	tab = ft_split(str, ":");
 	return (tab);
 }
 
@@ -98,8 +98,9 @@ char	**get_arg(char *command, char **env, int fd1, int fd2)
 	char	**arg;
 	char	*executable;
 	char	*tmp;
-
-	arg = ft_split(command, ' ');
+	
+	handle_error(command, fd1, fd2);	
+	arg = ft_split(command, " '");
 	if (!arg)
 		error(SPLIT_ERROR, NULL, fd1, fd2);
 	if (command_arg(arg, fd1, fd2) == 0)

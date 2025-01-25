@@ -6,13 +6,13 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 23:19:07 by igrousso          #+#    #+#             */
-/*   Updated: 2024/12/12 17:41:17 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 16:58:39 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_word(const char *s, char c)
+static int	count_word(const char *s, char *c)
 {
 	int	i;
 	int	j;
@@ -23,12 +23,12 @@ static int	count_word(const char *s, char c)
 	ct = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] != c && j == 0)
+		if (!ft_strchr((char *)c, s[i]) && j == 0)
 		{
 			j = 1;
 			ct++;
 		}
-		else if (s[i] == c)
+		else if (ft_strchr((char *)c , s[i]))
 			j = 0;
 		i++;
 	}
@@ -59,7 +59,7 @@ static void	ft_free(char **tab)
 		free(tab[i++]);
 }
 
-static char	**ft_split2(char const *s, char c, char **tab)
+static char	**ft_split2(char const *s, char *c, char **tab)
 {
 	int	i;
 	int	j;
@@ -70,9 +70,9 @@ static char	**ft_split2(char const *s, char c, char **tab)
 	index = -1;
 	while (i <= (int)ft_strlen(s))
 	{
-		if (s[i] != c && index < 0)
+		if (!ft_strchr((char *)c, s[i]) && index < 0)
 			index = i;
-		else if ((s[i] == c || i == (int)ft_strlen(s)) && index >= 0)
+		else if ((ft_strchr((char *)c, s[i]) || i == (int)ft_strlen(s)) && index >= 0)
 		{
 			tab[j] = word_dup(s, index, i);
 			if (!tab[j++])
@@ -87,12 +87,12 @@ static char	**ft_split2(char const *s, char c, char **tab)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char *c)
 {
 	char	**tab;
 
 	tab = ft_calloc((count_word(s, c) + 1), sizeof(char *));
-	if (!s || !tab)
+	if (!s || !tab || !c)
 		return (NULL);
 	tab = ft_split2(s, c, tab);
 	return (tab);

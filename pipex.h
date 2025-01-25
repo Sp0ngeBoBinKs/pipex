@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:06:19 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 15:26:21 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 23:52:32 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define SPLIT_ERROR 6
 # define EXEC_ERROR 7
 # define ABSOLUT_PATH_ERROR 8
+# define GNL_ERROR 9
 
 # define STDIN 0
 # define STDOUT 1
@@ -53,5 +54,16 @@ void	error2(char **arg, char **env, int fd1, int fd2);
 void	ft_free(char **tab);
 void	ft_close(int fd1, int fd2);
 int		ft_wait(int id1, int id2);
+
+/* process */
+
+void	first_arg(char *str, int *fd_p, int bonus);
+void	process1(int *fd_p, char *file, char *command, char **env);
+void	process2(int *fd_p, char *command, char *file, char **env);
+int		pipex(char **av, char **env);
+
+/* bonus */
+
+void	handle_error(char *av, int fd1, int fd2);
 
 #endif

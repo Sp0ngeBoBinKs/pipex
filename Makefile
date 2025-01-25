@@ -6,7 +6,7 @@
 #    By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/17 20:03:40 by igrousso          #+#    #+#              #
-#    Updated: 2025/01/25 16:07:16 by igrousso         ###   ########.fr        #
+#    Updated: 2025/01/25 21:41:31 by igrousso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ CFLAGS = -Wall -Wextra -Werror -g3
 # Project names
 
 NAME = pipex
-BONUS_NAME = 
+BONUS_NAME = pipex
 
 # Source files
 
-SRCS = $(addprefix sources/, utils.c get_command.c error.c)
+SRCS = $(addprefix sources/, utils.c get_command.c error.c process.c)
 MAIN = $(addprefix sources/, main.c)
 
-SRCS_B = $(addprefix sources/bonus/, )
-MAIN_B = $(addprefix sources/bonus/, main_bonus.c)
+SRCS_B = $(addprefix bonus/, )
+MAIN_B = $(addprefix bonus/, main_bonus.c)
 
 # Object files
 

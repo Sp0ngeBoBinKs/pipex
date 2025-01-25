@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:25:01 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 15:41:07 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:29:11 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,12 @@ void	error(int event, char *str, int fd1, int fd2)
 		perror("Error creating pipe");
 	if (event == FORK_ERROR)
 		perror("Error during fork");
-	if (event == SPLIT_ERROR)
-		perror("Error during split");
+	if (event == SPLIT_ERROR || event == GNL_ERROR)
+		perror("Error");
 	if (event == DUP_ERROR)
 		perror("Error duplicating the file descriptor");
 	if (event == OPEN_ERROR)
 		perror("Error opening file");
-	if (event == EXEC_ERROR)
-		perror("Error during execve");
 	if (event == ABSOLUT_PATH_ERROR)
 	{
 		write_error("no such file or directory: ", str);
