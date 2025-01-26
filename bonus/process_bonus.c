@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:44:23 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/26 18:21:21 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:20:22 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	pipex_bonus(int ac, char **av, char **env)
 {
 	int	fd_p[3];
 
-	if (ft_strncmp(av[1], "here_doc", 8) == 0)
+	if (ft_strncmp(av[1], "here_doc", 9) == 0)
 	{
 		if (ac < 6)
 			return (write(2, "Wrong number of arguments\n", 26));
