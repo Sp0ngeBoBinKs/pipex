@@ -6,7 +6,7 @@
 #    By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/17 20:03:40 by igrousso          #+#    #+#              #
-#    Updated: 2025/01/25 21:41:31 by igrousso         ###   ########.fr        #
+#    Updated: 2025/01/26 17:47:47 by igrousso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ BONUS_NAME = pipex
 SRCS = $(addprefix sources/, utils.c get_command.c error.c process.c)
 MAIN = $(addprefix sources/, main.c)
 
-SRCS_B = $(addprefix bonus/, )
+SRCS_B = $(addprefix bonus/, process_bonus.c utils_bonus.c)
 MAIN_B = $(addprefix bonus/, main_bonus.c)
 
 # Object files

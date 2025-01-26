@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 20:57:24 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 21:27:13 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:47:26 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	first_arg(char *str, int *fd_p, int bonus)
 {
 	if (access(str, F_OK) == -1)
 	{
-        if (!bonus)
-		    close(fd_p[1]);
+		if (!bonus)
+			close(fd_p[1]);
 		write_error("no such file or directory: ", str);
 		errno_exit();
 	}
 	if (access(str, R_OK) == -1)
 	{
 		if (!bonus)
-		    close(fd_p[1]);
+			close(fd_p[1]);
 		write_error("permission denied: ", str);
 		exit(0);
 	}

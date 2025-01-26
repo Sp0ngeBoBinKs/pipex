@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 23:19:07 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 16:58:39 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:42:42 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	count_word(const char *s, char *c)
 			j = 1;
 			ct++;
 		}
-		else if (ft_strchr((char *)c , s[i]))
+		else if (ft_strchr((char *)c, s[i]))
 			j = 0;
 		i++;
 	}
@@ -72,14 +72,12 @@ static char	**ft_split2(char const *s, char *c, char **tab)
 	{
 		if (!ft_strchr((char *)c, s[i]) && index < 0)
 			index = i;
-		else if ((ft_strchr((char *)c, s[i]) || i == (int)ft_strlen(s)) && index >= 0)
+		else if ((ft_strchr((char *)c, s[i]) || i == (int)ft_strlen(s))
+			&& index >= 0)
 		{
 			tab[j] = word_dup(s, index, i);
 			if (!tab[j++])
-			{
-				ft_free(tab);
-				return (NULL);
-			}
+				return (ft_free(tab), NULL);
 			index = -1;
 		}
 		i++;

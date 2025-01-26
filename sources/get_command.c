@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:19:32 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 23:51:32 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:46:29 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,26 @@ int	command_arg(char **av, int fd1, int fd2)
 	return (0);
 }
 
+// char **before_split(char *command, int fd1, int fd2)
+// {
+// 	char **arg;
+
+// 	if (check_arg_space(command))
+// 		arg = ft_split(command, " '");
+// 	else
+// 	{
+
+// 	}
+// 	return (arg);
+// }
+
 char	**get_arg(char *command, char **env, int fd1, int fd2)
 {
 	char	**arg;
 	char	*executable;
 	char	*tmp;
-	
-	handle_error(command, fd1, fd2);	
+
+	handle_error(command, fd1, fd2);
 	arg = ft_split(command, " '");
 	if (!arg)
 		error(SPLIT_ERROR, NULL, fd1, fd2);
