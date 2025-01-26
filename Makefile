@@ -6,7 +6,7 @@
 #    By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/17 20:03:40 by igrousso          #+#    #+#              #
-#    Updated: 2025/01/26 17:47:47 by igrousso         ###   ########.fr        #
+#    Updated: 2025/01/26 17:49:08 by igrousso         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 # Project names
 
 NAME = pipex
-BONUS_NAME = pipex
+BONUS_NAME = pipex_bonus
 
 # Source files
 
