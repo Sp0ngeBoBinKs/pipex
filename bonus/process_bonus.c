@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:44:23 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/26 17:45:34 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:21:21 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	last_process(int *fd_p, int ac, char **av, char **env)
 		process_out(fd_p, av[ac - 2], env);
 	ft_close(fd_p[2], fd_p[0]);
 	while (j++ < (ac - 3))
-		waitpid(id, &status, 0);
+		waitpid(-1, &status, 0);
 	waitpid(id, &status, 0);
 	return (WEXITSTATUS(status));
 }
