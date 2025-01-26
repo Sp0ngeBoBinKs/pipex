@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 20:06:19 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 23:52:32 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:52:12 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	error(int event, char *str, int fd1, int fd2);
 void	write_error(char *str1, char *str2);
 void	errno_exit(void);
 void	error2(char **arg, char **env, int fd1, int fd2);
+void	handle_error(char *av, int fd1, int fd2);
 
 /* utils */
 
@@ -64,6 +65,11 @@ int		pipex(char **av, char **env);
 
 /* bonus */
 
-void	handle_error(char *av, int fd1, int fd2);
+void	handle_here_doc(char *lim, int *fd_p);
+int		pipex_bonus(int ac, char **av, char **env);
+int		cmd_extra(int ac, char **av, char **env, int *fd_p);
+int		last_process(int *fd_p, int ac, char **av, char **env);
+void	process_out(int *fd_p, char *cmd, char **env);
+void	process(int *fd_p, char *cmd, char **env);
 
 #endif

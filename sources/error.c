@@ -6,7 +6,7 @@
 /*   By: igrousso <igrousso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 15:25:01 by igrousso          #+#    #+#             */
-/*   Updated: 2025/01/25 22:29:11 by igrousso         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:52:48 by igrousso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,22 @@ void	error(int event, char *str, int fd1, int fd2)
 	}
 	ft_close(fd1, fd2);
 	errno_exit();
+}
+
+void	handle_error(char *arg, int fd1, int fd2)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (arg[i] == '\'' && arg[i + 1] == '\'')
+		{
+			ft_close(fd1, fd2);
+			write_error("command not found: ", arg);
+			exit(127);
+		}
+		i++;
+	}
+	return ;
 }
